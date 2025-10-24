@@ -1,0 +1,115 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  title: string;
+  links: { href: string; text: string }[];
+}
+
+const { title, links } = Astro.props;
+const id = title.toLowerCase().replace(/\s/g, '-');
+---
+
+<div class="relative group" data-dropdown-menu>
+  <button
+    id={`menu-button-${id}`}
+    aria-expanded="false"
+    aria-controls={`menu-items-${id}`}
+    class="flex items-center text-manus-gray-700 hover:text-manus-blue-500 px-3 py-2 rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-manus-blue-500"
+  >
+    {title}
+    <Icon name="tabler:chevron-down" class="ml-1 w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+  </button>
+
+  <div
+    id={`menu-items-${id}`}
+    role="menu"
+    aria-labelledby={`menu-button-${id}`}
+    class="absolute z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none opacity-0 scale-95 transition duration-100 ease-out group-hover:opacity-100 group-hover:scale-100"
+    tabindex="-1"
+  >
+    <div class="py-1" role="none">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          role="menuitem"
+          tabindex="-1"
+          class="block px-4 py-2 text-sm text-manus-gray-700 hover:bg-manus-gray-100 hover:text-manus-blue-500"
+        >
+          {link.text}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  // JavaScript for keyboard accessibility and state management
+  document.addEventListener('DOMContentLoaded', () => {
+    const menus = document.querySelectorAll('[data-dropdown-menu]');
+
+    menus.forEach(menu => {
+      const button = menu.querySelector('button') as HTMLButtonElement;
+      const itemsContainer = menu.querySelector('[role="menu"]') as HTMLDivElement;
+      const links = Array.from(itemsContainer.querySelectorAll('a')) as HTMLAnchorElement[];
+
+      const toggleMenu = (isOpen: boolean) => {
+        button.setAttribute('aria-expanded', isOpen.toString());
+        itemsContainer.classList.toggle('opacity-0', !isOpen);
+        itemsContainer.classList.toggle('scale-95', !isOpen);
+        itemsContainer.classList.toggle('opacity-100', isOpen);
+        itemsContainer.classList.toggle('scale-100', isOpen);
+      };
+
+      // Open on click
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        toggleMenu(!isExpanded);
+      });
+
+      // Close on focus out
+      menu.addEventListener('focusout', (event) => {
+        if (!menu.contains(event.relatedTarget as Node)) {
+          toggleMenu(false);
+        }
+      });
+
+      // Keyboard navigation
+      button.addEventListener('keydown', (event) => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          if (!isExpanded) {
+            toggleMenu(true);
+            links[0]?.focus();
+          } else if (event.key === 'ArrowDown') {
+            links[0]?.focus();
+          }
+        } else if (event.key === 'Escape') {
+          toggleMenu(false);
+          button.focus();
+        }
+      });
+
+      links.forEach((link, index) => {
+        link.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            links[index + 1]?.focus();
+          } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            if (index === 0) {
+              button.focus();
+              toggleMenu(false);
+            } else {
+              links[index - 1]?.focus();
+            }
+          } else if (event.key === 'Escape') {
+            toggleMenu(false);
+            button.focus();
+          }
+        });
+      });
+    });
+  });
+</script>

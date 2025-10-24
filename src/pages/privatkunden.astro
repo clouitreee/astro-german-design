@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Placeholder Stripe Payment Links - MUST be replaced by the user
+const packages = [
+    {
+        title: "Basis-Hilfe",
+        price: "49€",
+        description: "Schnelle Hilfe für ein einzelnes Problem (z.B. Drucker, E-Mail-Einrichtung).",
+        features: ["1 Stunde Support", "Remote-Hilfe", "3 Tage Nachbetreuung"],
+        link: "https://buy.stripe.com/link_to_basis_package",
+    },
+    {
+        title: "Komfort-Paket",
+        price: "99€",
+        description: "Umfassende Unterstützung für mehrere Geräte oder Probleme komplexer Natur.",
+        features: ["3 Stunden Support", "Remote- oder Vor-Ort-Hilfe (Köln/Bonn)", "7 Tage Nachbetreuung", "Priorisierter Service"],
+        link: "https://buy.stripe.com/link_to_komfort_package",
+    },
+    {
+        title: "Premium-Sorglos",
+        price: "199€",
+        description: "Unser Rundum-Sorglos-Paket für maximale Sicherheit und Komfort über einen Monat.",
+        features: ["Unbegrenzter Support (1 Monat)", "Remote- und Vor-Ort-Hilfe", "System-Check & Optimierung", "Exklusiver 24/7-Support"],
+        link: "https://buy.stripe.com/link_to_premium_package",
+    },
+];
+---
+
+<BaseLayout title="Privatkunden | German Design System">
+	<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+		<header class="text-center mb-12">
+			<h1 class="text-5xl font-extrabold text-manus-blue-500">Unsere Service-Pakete für Privatkunden</h1>
+			<p class="mt-4 text-xl text-manus-gray-700">Wählen Sie das Paket, das am besten zu Ihren Bedürfnissen passt. Einfache und sichere Zahlung über Stripe.</p>
+		</header>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			{packages.map((pkg) => (
+				<div class="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col justify-between transition duration-300 hover:scale-[1.02]">
+					<div class="p-8">
+						<h2 class="text-3xl font-bold text-manus-blue-700 mb-2">{pkg.title}</h2>
+						<p class="text-manus-gray-500 mb-6">{pkg.description}</p>
+						<p class="text-5xl font-extrabold text-manus-success-500 mb-6">{pkg.price}</p>
+						
+						<ul class="space-y-3 text-manus-gray-600">
+							{pkg.features.map((feature) => (
+								<li class="flex items-start">
+									<svg class="flex-shrink-0 h-6 w-6 text-manus-success-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+									{feature}
+								</li>
+							))}
+						</ul>
+					</div>
+
+					<div class="p-8 pt-0">
+						<a
+							href={pkg.link}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="w-full block text-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-manus-success-500 hover:bg-manus-success-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-manus-success-500 transition duration-150"
+						>
+							Jetzt Kaufen
+						</a>
+						<p class="mt-2 text-xs text-center text-manus-gray-400">Sichere Zahlung über Stripe</p>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</BaseLayout>

@@ -1,0 +1,62 @@
+---
+const footerLinks = [
+  {
+    title: 'Unternehmen',
+    links: [
+      { href: '/unternehmen', text: 'Überblick' },
+      { href: '/unternehmen/loesungen', text: 'Lösungen' },
+      { href: '/unternehmen/karriere', text: 'Karriere' },
+    ],
+  },
+  {
+    title: 'Privatkunden',
+    links: [
+      { href: '/privatkunden', text: 'Überblick' },
+      { href: '/privatkunden/produkte', text: 'Produkte' },
+      { href: '/privatkunden/support', text: 'Support' },
+    ],
+  },
+  {
+    title: 'Rechtliches',
+    links: [
+      { href: '#', text: 'Impressum' },
+      { href: '#', text: 'Datenschutz' },
+      { href: '#', text: 'AGB' },
+    ],
+  },
+  {
+    title: 'Kontakt',
+    links: [
+      { href: '/kontakt', text: 'Kontaktformular' },
+      { href: '/ueber-uns', text: 'Standorte' },
+    ],
+  },
+];
+---
+
+<footer class="bg-manus-blue-500 text-white mt-12">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {footerLinks.map((section) => (
+        <div>
+          <h3 class="text-lg font-semibold mb-4 border-b border-manus-blue-400 pb-1">
+            {section.title}
+          </h3>
+          <ul class="space-y-3">
+            {section.links.map((link) => (
+              <li>
+                <a href={link.href} class="text-manus-blue-100 hover:text-white transition duration-150">
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-manus-blue-400 text-center text-sm text-manus-blue-200">
+      <p>&copy; {new Date().getFullYear()} German Design System. Alle Rechte vorbehalten.</p>
+    </div>
+  </div>
+</footer>

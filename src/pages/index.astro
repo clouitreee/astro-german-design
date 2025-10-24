@@ -1,18 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnimatedHero from '../components/AnimatedHero.jsx';
 ---
 
-<Layout title="Willkommen | German Design System">
-	<main class="min-h-screen p-8 bg-manus-gray-50 font-sans">
-		<h1 class="text-5xl font-extrabold text-manus-blue-500 mb-6">
-			Willkommen zum <span class="text-manus-success-500">German Design System</span>
-		</h1>
-		<p class="text-xl text-manus-gray-700 mb-8">
-			Dies ist eine Astro-Website mit TypeScript (strict) und Tailwind CSS, konfiguriert mit einer
-			professionellen und zugänglichen Farbpalette.
-		</p>
+<BaseLayout title="Willkommen | German Design System">
+	<div class="min-h-screen p-8">
+		<AnimatedHero client:load />
 
-		<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+		<!-- Color Palette Display - Retained from previous phase -->
+		<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
 			<!-- Primary Color Card -->
 			<div class="p-4 rounded-lg shadow-lg bg-white border-t-4 border-manus-blue-500">
 				<h2 class="text-2xl font-semibold text-manus-blue-700 mb-2">Primärfarbe (Corporate)</h2>
@@ -58,8 +54,6 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<footer class="mt-12 text-center text-manus-gray-500">
-			<p>&copy; 2025 German Design System. Erstellt mit Astro, TypeScript & Tailwind CSS.</p>
-		</footer>
-	</main>
-</Layout>
+
+	</div>
+</BaseLayout>

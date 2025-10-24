@@ -1,0 +1,67 @@
+---
+import DropdownMenu from './DropdownMenu.astro';
+
+const companyLinks = [
+  { href: '/unternehmen/loesungen', text: 'Lösungen' },
+  { href: '/unternehmen/karriere', text: 'Karriere' },
+];
+
+const privateLinks = [
+  { href: '/privatkunden/produkte', text: 'Produkte' },
+  { href: '/privatkunden/support', text: 'Support' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo/Brand -->
+      <div class="flex-shrink-0">
+        <a href="/" class="text-2xl font-bold text-manus-blue-500 hover:text-manus-blue-700 transition duration-150">
+          GDS
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-4 h-full items-center" aria-label="Hauptnavigation">
+        <a href="/" class="text-manus-gray-700 hover:text-manus-blue-500 px-3 py-2 rounded-md font-medium transition duration-150">
+          Home
+        </a>
+
+        <!-- Dropdown: Für Unternehmen -->
+        <DropdownMenu title="Für Unternehmen" links={companyLinks} />
+
+        <!-- Dropdown: Für Privatkunden -->
+        <DropdownMenu title="Für Privatkunden" links={privateLinks} />
+
+        <a href="/ueber-uns" class="text-manus-gray-700 hover:text-manus-blue-500 px-3 py-2 rounded-md font-medium transition duration-150">
+          Über Uns
+        </a>
+        <a href="/kontakt" class="text-manus-gray-700 hover:text-manus-blue-500 px-3 py-2 rounded-md font-medium transition duration-150">
+          Kontakt
+        </a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden md:block">
+        <a
+          href="/kontakt"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-manus-success-500 hover:bg-manus-success-600 transition duration-150"
+        >
+          Jetzt Starten
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button (Placeholder for future implementation) -->
+      <div class="md:hidden">
+        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-manus-gray-400 hover:text-manus-gray-500 hover:bg-manus-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-manus-blue-500" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="sr-only">Menü öffnen</span>
+          <!-- Icon placeholder -->
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
