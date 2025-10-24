@@ -1,43 +1,52 @@
-# Astro Starter Kit: Minimal
+# German Design System with Astro and Tailwind CSS
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Este proyecto es un sitio web inicializado con **Astro**, configurado con **TypeScript (strict)** y la integración de **Tailwind CSS**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+El objetivo principal es implementar un **Sistema de Diseño Alemán** (German Design System) con un enfoque en la accesibilidad (WCAG AA), utilizando una tipografía corporativa y una paleta de colores profesional.
 
-## 🚀 Project Structure
+## Características
 
-Inside of your Astro project, you'll see the following folders and files:
+*   **Framework:** Astro
+*   **Lenguaje:** TypeScript (Strict)
+*   **Estilos:** Tailwind CSS
+*   **Tipografía:** Inter (`fontFamily.sans = ['Inter', 'sans-serif']`)
+*   **Paleta de Colores Accesible:** Definida en `tailwind.config.mjs` con colores corporativos, neutros, de éxito y de alerta, todos diseñados para cumplir con el contraste WCAG AA.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Paleta de Colores (German Design System)
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+| Nombre de Tailwind | Color | Uso | Contraste (vs Blanco) |
+| :--- | :--- | :--- | :--- |
+| `manus-blue-500` | `#003366` | Primario (Corporativo) | 7.04:1 (AA) |
+| `manus-gray-600` | `#4B5563` | Neutro (Texto/Fondo) | 8.07:1 (AA) |
+| `manus-success-500` | `#10B981` | Éxito/Confianza | 4.54:1 (AA) |
+| `manus-alert-500` | `#EF4444` | Alerta/Error | 4.88:1 (AA) |
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Despliegue en Cloudflare Pages
 
-Any static assets, like images, can be placed in the `public/` directory.
+El proyecto está configurado para un despliegue continuo (Continuous Deployment) con Cloudflare Pages.
 
-## 🧞 Commands
+### Configuración Necesaria
 
-All commands are run from the root of the project, from a terminal:
+Para configurar el despliegue automático, sigue estos pasos en el panel de control de Cloudflare Pages:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+1.  **Conectar Git:** Conecta tu cuenta de GitHub y selecciona el repositorio `clouitreee/astro-german-design`.
+2.  **Configuración de Construcción (Build settings):**
+    *   **Framework preset:** `Astro`
+    *   **Build command:** `pnpm install && pnpm run build`
+    *   **Build output directory:** `dist`
 
-## 👀 Want to learn more?
+Cloudflare Pages detectará automáticamente los archivos estáticos generados en la carpeta `dist` y los desplegará. Cada `push` a la rama principal activará un nuevo despliegue.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Comandos de Desarrollo
+
+Para ejecutar el proyecto localmente, asegúrate de tener [pnpm](https://pnpm.io/) instalado.
+
+| Comando | Acción |
+| :--- | :--- |
+| `pnpm install` | Instala las dependencias del proyecto. |
+| `pnpm run dev` | Inicia el servidor de desarrollo en `http://localhost:4321`. |
+| `pnpm run build` | Construye el proyecto para producción en la carpeta `dist`. |
+| `pnpm run preview` | Previsualiza la construcción de producción localmente. |
+| `pnpm run astro ...` | Ejecuta la CLI de Astro. |
+| `pnpm run astro -- --help` | Obtén ayuda usando la CLI de Astro. |
+

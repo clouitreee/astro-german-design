@@ -1,16 +1,65 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Willkommen | German Design System">
+	<main class="min-h-screen p-8 bg-manus-gray-50 font-sans">
+		<h1 class="text-5xl font-extrabold text-manus-blue-500 mb-6">
+			Willkommen zum <span class="text-manus-success-500">German Design System</span>
+		</h1>
+		<p class="text-xl text-manus-gray-700 mb-8">
+			Dies ist eine Astro-Website mit TypeScript (strict) und Tailwind CSS, konfiguriert mit einer
+			professionellen und zugänglichen Farbpalette.
+		</p>
+
+		<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+			<!-- Primary Color Card -->
+			<div class="p-4 rounded-lg shadow-lg bg-white border-t-4 border-manus-blue-500">
+				<h2 class="text-2xl font-semibold text-manus-blue-700 mb-2">Primärfarbe (Corporate)</h2>
+				<div class="h-12 bg-manus-blue-500 rounded mb-2"></div>
+				<p class="text-manus-gray-600">
+					<span class="font-mono text-sm text-manus-blue-500">manus-blue-500</span>
+					<br>
+					<span class="font-mono text-sm">#003366</span>
+				</p>
+			</div>
+
+			<!-- Neutral Color Card -->
+			<div class="p-4 rounded-lg shadow-lg bg-white border-t-4 border-manus-gray-600">
+				<h2 class="text-2xl font-semibold text-manus-gray-700 mb-2">Neutralfarbe (Text/Hintergrund)</h2>
+				<div class="h-12 bg-manus-gray-600 rounded mb-2"></div>
+				<p class="text-manus-gray-600">
+					<span class="font-mono text-sm text-manus-gray-600">manus-gray-600</span>
+					<br>
+					<span class="font-mono text-sm">#4B5563</span>
+				</p>
+			</div>
+
+			<!-- Success Color Card -->
+			<div class="p-4 rounded-lg shadow-lg bg-white border-t-4 border-manus-success-500">
+				<h2 class="text-2xl font-semibold text-manus-success-700 mb-2">Erfolg (Success/Vertrauen)</h2>
+				<div class="h-12 bg-manus-success-500 rounded mb-2"></div>
+				<p class="text-manus-gray-600">
+					<span class="font-mono text-sm text-manus-success-500">manus-success-500</span>
+					<br>
+					<span class="font-mono text-sm">#10B981</span>
+				</p>
+			</div>
+
+			<!-- Alert Color Card -->
+			<div class="p-4 rounded-lg shadow-lg bg-white border-t-4 border-manus-alert-500">
+				<h2 class="text-2xl font-semibold text-manus-alert-700 mb-2">Alarm (Alert/Fehler)</h2>
+				<div class="h-12 bg-manus-alert-500 rounded mb-2"></div>
+				<p class="text-manus-gray-600">
+					<span class="font-mono text-sm text-manus-alert-500">manus-alert-500</span>
+					<br>
+					<span class="font-mono text-sm">#EF4444</span>
+				</p>
+			</div>
+		</section>
+
+		<footer class="mt-12 text-center text-manus-gray-500">
+			<p>&copy; 2025 German Design System. Erstellt mit Astro, TypeScript & Tailwind CSS.</p>
+		</footer>
+	</main>
+</Layout>
