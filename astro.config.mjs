@@ -2,20 +2,24 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
-
 import icon from 'astro-icon';
-
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import robotsTxt from '@astrojs/robots-txt';
+// import robotsTxt from '@astrojs/robots-txt';
 import image from '@astrojs/image';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.your-domain.com', // MUST be replaced by the user
+  site: 'https://www.techhilfepro.de',
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [icon(), react(), sitemap(), robotsTxt(), image({ serviceEntryPoint: '@astrojs/image/sharp' })]
+  integrations: [
+    icon(),
+    react(),
+    sitemap(),
+    // robotsTxt(),
+    image({ serviceEntryPoint: '@astrojs/image/sharp' })
+  ]
 });
