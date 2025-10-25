@@ -1,0 +1,70 @@
+---
+import { AstroSeo } from 'astro-seo';
+
+export interface Props {
+    title: string;
+    description?: string;
+    canonical?: string;
+    openGraph?: {
+        title: string;
+        description: string;
+        image: string;
+        url: string;
+        type: 'website' | 'article' | 'profile';
+    };
+    schema?: any; // For JSON-LD
+    lang?: 'de-DE' | 'es-ES'; // For hreflang
+}
+
+const {
+    title,
+    description = 'Ihre digitale Präsenz, gebaut auf Präzision, Zugänglichkeit und deutschem Ingenieurwesen.',
+    canonical,
+    openGraph,
+    schema,
+    lang = 'de-DE'
+} = Astro.props;
+
+const BASE_URL = Astro.site || 'https://www.your-domain.com';
+const currentUrl = new URL(Astro.url.pathname, BASE_URL).href;
+const finalCanonical = canonical || currentUrl;
+
+// Default OpenGraph data
+const defaultOpenGraph = {
+    basic: {
+        title: openGraph?.title || title,
+        type: openGraph?.type || 'website',
+        image: openGraph?.image || `${BASE_URL}/og-image.jpg`, // Placeholder
+        url: openGraph?.url || currentUrl,
+    },
+    optional: {
+        description: openGraph?.description || description,
+        locale: lang === 'de-DE' ? 'de_DE' : 'es_ES',
+    },
+};
+
+// Hreflang setup
+const hreflangs = [
+    { href: currentUrl.replace('/es/', '/de/'), hrefLang: 'de-DE' },
+    { href: currentUrl.replace('/de/', '/es/'), hrefLang: 'es-ES' },
+    { href: currentUrl, hrefLang: 'x-default' },
+];
+---
+
+<AstroSeo
+    title={title}
+    description={description}
+    canonical={finalCanonical}
+    openGraph={defaultOpenGraph}
+    extend={{
+        link: [
+            { rel: 'alternate', href: hreflangs[0].href, hreflang: hreflangs[0].hrefLang },
+            { rel: 'alternate', href: hreflangs[1].href, hreflang: hreflangs[1].hrefLang },
+            { rel: 'alternate', href: hreflangs[2].href, hreflang: hreflangs[2].hrefLang },
+        ],
+        meta: [
+            { name: 'theme-color', content: '#003366' }, // manus-blue-500
+        ],
+    }}
+    {...schema && { script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] }}
+/>

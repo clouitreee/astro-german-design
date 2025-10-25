@@ -1,0 +1,32 @@
+---
+import { Image } from '@astrojs/image/components';
+import placeholderImage from '../assets/placeholder.png'; // Placeholder path
+
+export interface Props {
+    alt: string;
+    width: number;
+    height: number;
+    class?: string;
+}
+
+const { alt, width, height, class: className } = Astro.props;
+---
+
+<!-- NOTE: This is a placeholder component. 
+To use it, you must add an image file to src/assets/placeholder.png 
+and uncomment the import and the Image component. 
+The Image component will automatically optimize the image to WebP/AVIF. -->
+
+<div class={`bg-manus-gray-200 flex items-center justify-center ${className}`} style={{ width: `${width}px`, height: `${height}px` }}>
+    <p class="text-manus-gray-600 text-sm">Optimized Image Placeholder ({width}x{height})</p>
+    <!-- 
+    <Image 
+        src={placeholderImage} 
+        alt={alt} 
+        width={width} 
+        height={height} 
+        format="webp" 
+        class="w-full h-full object-cover"
+    />
+    -->
+</div>

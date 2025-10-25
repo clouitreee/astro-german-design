@@ -1,8 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "IT-Dienstleistungen für Unternehmen",
+    "provider": {
+        "@type": "Organization",
+        "name": "TechHilfe Pro",
+        "url": "https://www.your-domain.com/unternehmen"
+    },
+    "areaServed": {
+        "@type": "State",
+        "name": "Nordrhein-Westfalen"
+    },
+    "description": "Umfassende IT-Lösungen und Services für Geschäftskunden, einschließlich Wartung, Support und Systemintegration."
+};
 ---
 
-<BaseLayout title="Unternehmen | German Design System">
+<BaseLayout title="Für Unternehmen | German Design System" schema={schema}>
 	<main class="p-8">
 		<h1 class="text-4xl font-bold text-manus-blue-500">Für Unternehmen</h1>
 		<p class="mt-4 text-manus-gray-700">Lösungen und Services für Geschäftskunden.</p>

@@ -1,9 +1,51 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnimatedHero from '../components/AnimatedHero.jsx';
+
+const schema = [
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "TechHilfe Pro",
+        "image": "https://www.your-domain.com/logo.png", // Placeholder
+        "url": "https://www.your-domain.com",
+        "description": "Ihre digitale Präsenz, gebaut auf Präzision, Zugänglichkeit und deutschem Ingenieurwesen.",
+        "serviceType": "Computer Repair Service",
+        "areaServed": {
+            "@type": "State",
+            "name": "Nordrhein-Westfalen"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+49-221-987654321",
+            "contactType": "customer service"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "TechHilfe Pro",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Venloer Str. 500",
+            "addressLocality": "Köln",
+            "postalCode": "50823",
+            "addressCountry": "DE"
+        },
+        "telephone": "+49-221-987654321",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+            }
+        ]
+    }
+];
 ---
 
-<BaseLayout title="Willkommen | German Design System">
+<BaseLayout title="Willkommen | German Design System" schema={schema}>
 	<div class="min-h-screen p-8">
 		<AnimatedHero client:load />
 

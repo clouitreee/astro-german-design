@@ -6,12 +6,16 @@ import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
+import robotsTxt from '@astrojs/robots-txt';
+import image from '@astrojs/image';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.your-domain.com', // MUST be replaced by the user
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [icon(), react()]
+  integrations: [icon(), react(), sitemap(), robotsTxt(), image({ serviceEntryPoint: '@astrojs/image/sharp' })]
 });
