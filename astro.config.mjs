@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 // import image from '@astrojs/image';
 
 export default defineConfig({
-  site: 'https://www.your-domain.com',
+  site: 'https://www.techhilfepro.de',
   vite: {
     plugins: [tailwindcss()]
   },
