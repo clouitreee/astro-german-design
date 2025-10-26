@@ -1,14 +1,11 @@
 ---
-const BASE = Astro.site || new URL('https://www.techhilfepro.de');
-const here = new URL(Astro.url.pathname, BASE);
-const url = here.href;
----
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-
 <BaseLayout title="Über Uns | German Design System">
-	<main class="p-8">
-		<h1 class="text-4xl font-bold text-manus-blue-500">Über Uns</h1>
-		<p class="mt-4 text-manus-gray-700">Erfahren Sie mehr über unsere Mission und Vision.</p>
-	</main>
+  <main class="p-8">
+    <article class="prose prose-stone max-w-none">
+      <h1>Über Uns</h1>
+      <p>Erfahren Sie mehr über unsere Mission und Vision.</p>
+    </article>
+  </main>
 </BaseLayout>
