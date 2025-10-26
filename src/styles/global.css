@@ -1,15 +1,1 @@
 @import "tailwindcss";
-:root { color-scheme: light dark; }
-html { hanging-punctuation: first last; text-wrap: pretty; }
-a{
-  text-decoration: none;
-  transition: color .2s ease, background-color .2s ease, box-shadow .2s ease;
-}
-a:where(:link,:visited){ color: rgb(var(--c-link, 0 51 102)); } /* azul corporativo accesible */
-a:hover{ color: rgb(var(--c-link-hover, 0 72 145)); }
-a:focus-visible{
-  outline: 2px solid var(--c-focus, #ff5a3d);
-  outline-offset: 3px;
-  border-radius: .25rem;
-}
-.prose :where(a){ text-decoration: underline; text-underline-offset: 2px; }
