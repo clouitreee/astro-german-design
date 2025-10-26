@@ -1,2 +1,6 @@
- @import "tailwindcss";
-+@plugin "@tailwindcss/typography";
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Ajustes base recomendados */
+:root { color-scheme: light dark; }
+html { text-wrap: pretty; }
