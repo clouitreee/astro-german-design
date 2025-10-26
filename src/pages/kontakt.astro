@@ -1,4 +1,8 @@
 ---
+const BASE = Astro.site || new URL('https://www.techhilfepro.de');
+const here = new URL(Astro.url.pathname, BASE);
+const url = here.href;
+---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
