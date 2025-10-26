@@ -1,67 +1,37 @@
----
-import DropdownMenu from './DropdownMenu.astro';
-
-const companyLinks = [
-  { href: '/unternehmen/loesungen', text: 'Lösungen' },
-  { href: '/unternehmen/karriere', text: 'Karriere' },
-];
-
-const privateLinks = [
-  { href: '/privatkunden/produkte', text: 'Produkte' },
-  { href: '/privatkunden/support', text: 'Support' },
-];
----
-
 <header class="sticky top-0 z-50 bg-white shadow-md">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <!-- Logo/Brand -->
-      <div class="flex-shrink-0">
-        <a href="/" class="text-2xl font-bold text-manus-blue-500 hover:text-manus-blue-700 transition duration-150">
-          GDS
-        </a>
-      </div>
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="font-semibold text-manus-blue-600">Tech&nbsp;Hilfe&nbsp;Pro</a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex space-x-4 h-full items-center" aria-label="Hauptnavigation">
-        <a href="/" class="text-manus-gray-700 hover:text-manus-blue-500 px-3 py-2 rounded-md font-medium transition duration-150">
-          Home
-        </a>
+      <button id="mnav-btn" aria-expanded="false" aria-controls="mnav"
+        class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-manus-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+        type="button">
+        <span class="sr-only">Menü öffnen</span>
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
 
-        <!-- Dropdown: Für Unternehmen -->
-        <DropdownMenu title="Für Unternehmen" links={companyLinks} />
-
-        <!-- Dropdown: Für Privatkunden -->
-        <DropdownMenu title="Für Privatkunden" links={privateLinks} />
-
-        <a href="/ueber-uns" class="text-manus-gray-700 hover:text-manus-blue-500 px-3 py-2 rounded-md font-medium transition duration-150">
-          Über Uns
-        </a>
-        <a href="/kontakt" class="text-manus-gray-700 hover:text-manus-blue-500 px-3 py-2 rounded-md font-medium transition duration-150">
-          Kontakt
-        </a>
-      </nav>
-
-      <!-- CTA Button -->
-      <div class="hidden md:block">
-        <a
-          href="/kontakt"
-          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-manus-success-500 hover:bg-manus-success-600 transition duration-150"
-        >
-          Jetzt Starten
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button (Placeholder for future implementation) -->
-      <div class="md:hidden">
-        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-manus-gray-400 hover:text-manus-gray-500 hover:bg-manus-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-manus-blue-500" aria-controls="mobile-menu" aria-expanded="false">
-          <span class="sr-only">Menü öffnen</span>
-          <!-- Icon placeholder -->
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
+      <ul id="mnav" class="hidden md:flex gap-6">
+        <li><a href="/privatkunden">Privatkunden</a></li>
+        <li><a href="/unternehmen">Unternehmen</a></li>
+        <li><a href="/kontakt" class="btn btn-primary">Kontakt</a></li>
+      </ul>
     </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mnav-btn');
+  const nav = document.getElementById('mnav');
+  const set = (open) => {
+    nav.classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('overflow-hidden', open);
+  };
+  btn?.addEventListener('click', () => set(nav.classList.contains('hidden')));
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') set(false) });
+  addEventListener('scroll', () => set(false), { passive: true });
+  addEventListener('astro:page-load', () => set(false));
+</script>
+
   </div>
 </header>
