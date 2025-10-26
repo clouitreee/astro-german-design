@@ -21,10 +21,26 @@ const RESEND_ENDPOINT = 'https://api.resend.com/emails';
 const TURNSTILE_VERIFY_ENDPOINT = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 // Helper function for JSON response
-const jsonResponse = (body, status = 200) => new Response(JSON.stringify(body), {
-    status,
-    headers: {
-        'Content-Type': 'application/json',
+-const jsonResponse = (body, status = 200) => new Response(JSON.stringify(body), {
++const jsonResponse = (body, status = 200, origin) => new Response(JSON.stringify(body), {
+     status,
+     headers: {
+         'Content-Type': 'application/json',
+-        'Access-Control-Allow-Origin': '*',
++        'Access-Control-Allow-Origin': origin || '',
+     },
+ });
+@@
+-    const origin = request.headers.get('Origin');
++    const origin = request.headers.get('Origin');
+     if (env.ALLOWED_ORIGIN && origin !== env.ALLOWED_ORIGIN) {
+       ...
+-      return jsonResponse({ ... }, 403);
++      return jsonResponse({ ... }, 403, origin);
+     }
+@@
+-    return jsonResponse({ success: true, message: 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.' });
++    return jsonResponse({ success: true, message: 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.' }, 200, origin);
         // In CF Pages, CORS is often handled by the function itself or the Pages configuration
         'Access-Control-Allow-Origin': '*', 
     },
