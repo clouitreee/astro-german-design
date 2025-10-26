@@ -13,7 +13,7 @@ import image from '@astrojs/image';
 // https://astro.build/config
 export default defineConfig({
   // TODO: ¡Reemplazar por el dominio de producción final antes de desplegar!
-  site: 'https://www.your-domain.com', // MUST be replaced by the user
+  site: 'https://www.techhilfepro.de', // Using the remote's value as the placeholder for now
   vite: {
     plugins: [tailwindcss()]
   },

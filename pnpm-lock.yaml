@@ -45,6 +45,7 @@ importers:
         specifier: ^4.1.16
         version: 4.1.16
     devDependencies:
+<<<<<<< HEAD
       '@types/sanitize-html':
         specifier: ^2.16.0
         version: 2.16.0
@@ -84,6 +85,11 @@ importers:
       vitest:
         specifier: ^4.0.3
         version: 4.0.3(@types/debug@4.1.12)(@types/node@24.9.1)(@vitest/ui@4.0.3)(jiti@2.6.1)(lightningcss@1.30.2)
+=======
+      '@iconify-json/tabler':
+        specifier: ^1.2.23
+        version: 1.2.23
+>>>>>>> e205f7e3b8933a8b4364614e50f7a8f23b7efe9b
 
 packages:
 
@@ -403,6 +409,7 @@ packages:
     cpu: [x64]
     os: [win32]
 
+<<<<<<< HEAD
   '@eslint-community/eslint-utils@4.9.0':
     resolution: {integrity: sha512-ayVFHdtZ+hsq1t2Dy24wCmGXGe4q9Gu3smhLYALJrr473ZH27MsnSL+LKUlimp4BWJqMDMLmPpx/Q9R3OAlL4g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -456,6 +463,10 @@ packages:
   '@humanwhocodes/retry@0.4.3':
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
+=======
+  '@iconify-json/tabler@1.2.23':
+    resolution: {integrity: sha512-Knb8ykgMwB5uSoqrDv1xIdJYM03OP06OXjN6QvGXaTNtdHkW9ciKA+aftz6lwM2jwJA+bsUWeDzLBlPt2uJm4w==}
+>>>>>>> e205f7e3b8933a8b4364614e50f7a8f23b7efe9b
 
   '@iconify/tools@4.1.4':
     resolution: {integrity: sha512-s6BcNUcCxQ3S6cvhlsoWzOuBt8qKXdVyXB9rT57uSJ/ARHD7dVM43+5ERBWn3tmkMWXeJ/s9DPVc3dUasayzeA==}
@@ -3461,6 +3472,7 @@ snapshots:
   '@esbuild/win32-x64@0.25.11':
     optional: true
 
+<<<<<<< HEAD
   '@eslint-community/eslint-utils@4.9.0(eslint@9.38.0(jiti@2.6.1))':
     dependencies:
       eslint: 9.38.0(jiti@2.6.1)
@@ -3517,6 +3529,11 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.4.3': {}
+=======
+  '@iconify-json/tabler@1.2.23':
+    dependencies:
+      '@iconify/types': 2.0.0
+>>>>>>> e205f7e3b8933a8b4364614e50f7a8f23b7efe9b
 
   '@iconify/tools@4.1.4':
     dependencies:

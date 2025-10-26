@@ -29,6 +29,7 @@
     "tailwindcss": "^4.1.16"
   },
   "devDependencies": {
+    "@iconify-json/tabler": "^1.2.23",
     "@types/sanitize-html": "^2.16.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
