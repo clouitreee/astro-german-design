@@ -1,0 +1,55 @@
+---
+// Este componente sirve como un placeholder para la configuración de Klaro!
+// La configuración real de Klaro! (o cualquier otro CMP) debe ser insertada aquí
+// y en el <head> de BaseLayout.astro.
+//
+// NOTA: La instalación de Klaro! requiere un script externo y un archivo de configuración
+// JSON/JS que define los servicios (ej. Google Analytics, Google Fonts, etc.)
+// y los bloquea con el atributo data-cmp-managed="true" (ya añadido a Google Fonts).
+//
+// El siguiente código es la configuración de Klaro! para el contexto alemán.
+---
+
+<script is:inline>
+    // Configuración de Klaro! para GDPR/TTDSG
+    // Documentación: https://klaro.org/docs/getting-started/installation
+    window.klaroConfig = {
+        version: 1,
+        lang: 'de',
+        elementID: 'klaro',
+        storageMethod: 'localStorage',
+        storageName: 'gdpr_consent_status',
+        default: false, // Bloquear todo por defecto
+        mustConsent: true, // El usuario debe interactuar
+        acceptAll: true, // Botón "Aceptar todo"
+        hideDeclineAll: false, // Mostrar botón "Rechazar todo"
+        
+        translations: {
+            de: {
+                consentModal: {
+                    title: 'Datenschutz-Einstellungen',
+                    description: 'Wir nutzen Cookies und externe Dienste auf unserer Website. Einige von ihnen sind essenziell, während andere uns helfen, diese Website und Ihre Erfahrung zu verbessern.',
+                },
+                googleFonts: {
+                    title: 'Google Fonts',
+                    description: 'Lädt externe Schriftarten von Google-Servern, um eine konsistente Darstellung der Website zu gewährleisten. Hierbei können Daten (z.B. IP-Adresse) an Google übertragen werden.',
+                },
+                purposes: {
+                    essential: 'Essenziell',
+                    styling: 'Darstellung',
+                },
+            },
+        },
+        
+        services: [
+            {
+                name: 'google-fonts',
+                title: 'Google Fonts',
+                default: false, // Debe ser aceptado explícitamente
+                purposes: ['styling'],
+                required: false,
+            },
+            // AÑADIR AQUÍ GOOGLE ANALYTICS, ETC.
+        ],
+    };
+</script>
