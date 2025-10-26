@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Ajustes base recomendados */
+/* opcional pero útil */
 :root { color-scheme: light dark; }
 html { text-wrap: pretty; }
+.prose :where(a){ text-decoration: underline; text-underline-offset: 2px; }
+.prose :where(code){ font-weight: 500; }
